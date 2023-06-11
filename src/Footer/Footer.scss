@@ -1,0 +1,61 @@
+@import '../utils/variables';
+
+.footer {
+  padding-top: 25px;
+  padding-bottom: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__timer-wrapper {
+    width: max-content;
+  }
+
+  &__timer-wrapper-button {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    color: $color-white;
+    border: 1px solid $color-white;
+    padding: 5px;
+    border-radius: 8px;
+    transition: all 0.4s;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 100%;
+      top: 0;
+      display: block;
+      background: $color-white;
+      transition: all 0.4s;
+      z-index:-1;
+      opacity: 0;
+    }
+
+    &::before {
+      left: 0;
+      border-top-left-radius: 7px;
+      border-bottom-left-radius: 7px;
+    }
+
+    &::after {
+      right: 0;
+      border-top-right-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    &:hover {
+      color: $color-black;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      width:50%;
+      opacity: 1;
+    }
+  }
+}

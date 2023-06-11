@@ -6,7 +6,7 @@ import { HeartAnimation } from '../HeartAnimation';
 export const Header = () => {
   return (
     <header className="header">
-      <div className="header__logo">
+      <div className="header__logo logo">
         <img src={Logo} alt="Brambllee & Burogozzz" />
       </div>
       <HeartAnimation />

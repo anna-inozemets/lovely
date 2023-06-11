@@ -3,6 +3,7 @@ import './App.scss';
 import { Header } from './Header';
 import { GreetingSection } from './GreetingSection';
 import { Memories } from './Memories';
+import { Footer } from './Footer';
 
 export const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ export const App: React.FC = () => {
         <GreetingSection />
         <Memories />
       </main>
+      <Footer />
     </div>
   );
 };
