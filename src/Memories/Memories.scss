@@ -1,0 +1,27 @@
+@import '../utils/variables';
+
+.memories {
+  &__title {
+    margin-bottom: 25px;
+  }
+
+  &__part {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &:first-of-type {
+      flex-direction: row-reverse;
+      margin-bottom: 35px;
+    }
+  }
+
+  &__part-photo {
+    flex-basis: calc(33.33% - 20px);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.6);
+  }
+}

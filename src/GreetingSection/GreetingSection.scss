@@ -1,0 +1,25 @@
+@import '../utils/variables';
+
+.greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - #{$desktop-header-height});
+
+  &__title {
+    width: 100%;
+    max-width: 660px;
+    padding: 10px 5px;
+    margin-top: -100px;
+    border-top: 2px solid $color-white;
+    border-bottom: 2px solid $color-white;
+    
+    height: 0px;
+    overflow: hidden;
+    transition: height 2s;
+
+    &.is-visible {
+      height: auto;
+    }
+  }
+}
