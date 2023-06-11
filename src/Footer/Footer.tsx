@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import './Footer.scss';
 import ReactDOM from 'react-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import Logo from '../images/logo.svg';
 import { Timer } from '../Timer';
 import { Modal } from '../Modal';
 import ModalPhoto from '../images/kill-you.jpg';
+import 'react-toastify/dist/ReactToastify.css';
+import NotificationPhoto from '../images/notification.jpg';
+
+toast.configure();
 
 export const Footer: React.FC = () => {
   const startDate = new Date('2021-06-28');
@@ -17,6 +22,21 @@ export const Footer: React.FC = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
+    toast(
+      <div className="notification">
+        <img
+          className="notification__image"
+          src={NotificationPhoto}
+          alt="You stay alive!"
+        />
+        <p className="notification__text">Вы этого избежали ↑</p>
+      </div>,
+      {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: 'dark',
+        autoClose: 7000,
+      },
+    );
   };
 
   return (
@@ -30,12 +50,18 @@ export const Footer: React.FC = () => {
         >
           Остановить таймер
         </button>
+        <ToastContainer />
         {showModal && modalRoot && (
           ReactDOM.createPortal(
             <Modal>
-              <button onClick={handleCloseModal} type="button">Close Modal</button>
               <img src={ModalPhoto} alt="We will kill you!" />
-              <h3>Мы вас убьем &#128524;</h3>
+              <h3>Ваша заявка принята, мы вас убьем &#128524;</h3>
+              <button
+                onClick={handleCloseModal}
+                type="button"
+              >
+                Отменить заявку
+              </button>
             </Modal>,
             modalRoot,
           )

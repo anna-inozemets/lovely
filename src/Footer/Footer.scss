@@ -59,3 +59,19 @@
     }
   }
 }
+
+.notification {
+  position: relative;
+  right: -15px;
+
+  &__image {
+    border-radius: 4px;
+    width: 65%;
+    height: auto;
+    margin: 0 auto 15px;
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
