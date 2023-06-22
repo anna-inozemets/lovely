@@ -1,11 +1,45 @@
+@import './utils/mixins.scss';
+
 .container {
   width: 100%;
   max-width: 1400px;
   padding-left: 60px;
   padding-right: 60px;
+  margin: 0 auto;
 }
 
 .section {
   padding-top: 35px;
   padding-bottom: 35px;
+}
+
+@include mediaQuery(smallDesktop) {
+  .container {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .section {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
+@include mediaQuery(tablet) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@include mediaQuery(phone) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .section {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }

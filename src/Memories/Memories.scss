@@ -1,4 +1,5 @@
 @import '../utils/variables';
+@import '../utils/mixins.scss';
 
 .memories {
   &__title {
@@ -23,5 +24,37 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.6);
+  }
+}
+
+@include mediaQuery(smallDesktop) {
+  .memories {
+    &__part {
+      gap: 15px;
+    }
+  
+    &__part-photo {
+      flex-basis: calc(25% - 15px);
+    }
+  }
+}
+
+@include mediaQuery(tablet) {
+  .memories {
+    &__part {
+      justify-content: center;
+    }
+
+    &__part-photo {
+      flex-basis: 40%;
+    }
+  }
+}
+
+@include mediaQuery(phone) {
+  .memories {
+    &__part-photo {
+      flex-basis: 70%;
+    }
   }
 }

@@ -1,4 +1,5 @@
 @import '../utils/variables';
+@import '../utils/mixins.scss';
 
 .memories__part-card {
   border-radius: 16px;
@@ -63,4 +64,27 @@
 
 .memories__part-card.flipped .memories__part-card-inner {
   transform: rotateY(180deg);
+}
+
+@include mediaQuery(smallDesktop) {
+  .memories__part-card {
+    &-back {
+      padding: 5px;
+
+      & p {
+        font-size: 11px;
+        line-height: 13px;
+      }
+    }
+  }
+}
+
+@include mediaQuery(tablet) {
+  .memories__part-card {
+    min-height: 95px;
+
+    &-back {
+      padding: 10px;
+    }
+  }
 }

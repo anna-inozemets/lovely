@@ -1,4 +1,5 @@
 @import '../utils/variables';
+@import '../utils/mixins.scss';
 
 .modal {
   position: fixed;
@@ -20,11 +21,12 @@
     margin: 0 auto;
     max-height: 90vh;
     height: auto;
-    width: 50%;
-    max-width: 100%;
+    width: 90%;
+    max-width: 660px;
     padding: 25px;
     padding-bottom: 15px;
     color: $color-black;
+    overflow-y: scroll;
 
     &::-webkit-scrollbar {
       width: 0.5em;
@@ -89,6 +91,20 @@
       &:hover::before {
         width:50%;
         opacity: 1;
+      }
+    }
+  }
+}
+
+@include mediaQuery(phone) {
+  .modal {
+    &__content {
+      & h3 {
+        font-size: 20px;
+      }
+  
+      & button {
+        font-size: 10px;
       }
     }
   }

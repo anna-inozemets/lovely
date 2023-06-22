@@ -9,7 +9,7 @@ export const GreetingSection: React.FC = () => {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowBlock(true);
-    }, 1500);
+    }, 2500);
 
     if (blockRef.current) {
       const blockHeight = blockRef.current?.scrollHeight;

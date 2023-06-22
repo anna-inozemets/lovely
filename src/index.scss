@@ -1,9 +1,12 @@
+@import './utils/mixins.scss';
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+body,
 html {
   overflow-x: hidden;
 }
@@ -72,3 +75,28 @@ img {
   max-height: 100%;
   object-fit: cover;
 }
+
+@include mediaQuery(smallDesktop) {
+  h1,
+  h2,
+  h3 {
+    font-size: 32px;
+  }
+}
+
+@include mediaQuery(tablet) {
+  h1,
+  h2,
+  h3 {
+    font-size: 26px;
+  }
+}
+
+@include mediaQuery(phone) {
+  h1,
+  h2,
+  h3 {
+    font-size: 20px;
+  }
+}
+

@@ -13,12 +13,14 @@ export const Timer: React.FC<Props> = ({ startDate }) => {
       const now = new Date();
       const distance = now.getTime() - startDate.getTime();
 
-      const years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
-      const months = Math.floor((distance / (1000 * 60 * 60 * 24 * 30)) % 12);
-      const days = Math.floor((distance / (1000 * 60 * 60 * 24)) % 30);
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const millisecondsPerDay = 24 * 60 * 60 * 1000;
+      const days = Math.floor(distance / millisecondsPerDay);
+      const years = Math.floor(days / 365);
+      const months = Math.floor((days % 365) / 30);
+      const remainingDays = Math.floor((days % 365) % 30);
+      const hours = Math.floor((distance % millisecondsPerDay) / (1000 * 60 * 60));
 
-      setTimeElapsed(`${years}y ${months}m ${days}d ${hours}h`);
+      setTimeElapsed(`${years}y ${months}m ${remainingDays}d ${hours}h`);
     }, 10);
 
     return () => clearInterval(interval);

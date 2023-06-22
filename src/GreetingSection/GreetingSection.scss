@@ -1,4 +1,5 @@
 @import '../utils/variables';
+@import '../utils/mixins.scss';
 
 .greeting {
   display: flex;
@@ -14,12 +15,35 @@
     border-top: 2px solid $color-white;
     border-bottom: 2px solid $color-white;
     
-    height: 0px;
+    height: 0;
     overflow: hidden;
     transition: height 2s;
 
     &.is-visible {
       height: auto;
     }
+  }
+}
+
+@include mediaQuery(smallDesktop) {
+  .greeting {
+    min-height: calc(100vh - #{$smallDesktop-header-height});
+  
+    &__title {
+      padding: 20px 5px;
+      margin-top: -80px;
+    }
+  }
+}
+
+@include mediaQuery(tablet) {
+  .greeting {
+    min-height: calc(100vh - #{$tablet-header-height});
+  }
+}
+
+@include mediaQuery(phone) {
+  .greeting {
+    min-height: calc(100vh - #{$phone-header-height});
   }
 }

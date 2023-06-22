@@ -1,7 +1,33 @@
+@import '../utils/mixins.scss';
+
 .header {
   padding-top: 25px;
   padding-bottom: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@include mediaQuery(smallDesktop) {
+  .header {
+    padding-top: 20px;
+    padding-bottom: 30px;
+  }
+}
+
+@include mediaQuery(tablet) {
+  .logo {
+    width: 200px;
+  }
+
+  .header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+@include mediaQuery(phone) {
+  .logo {
+    width: 150px;
+  }
 }
