@@ -1,0 +1,40 @@
+@import '../utils/variables';
+@import '../utils/mixins.scss';
+
+.header__heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+
+    & path {
+      transition: all 0.4s;
+    }
+  }
+}
+
+.header__heart.active {
+  & svg path{
+    fill: $color-chill-red;
+    stroke: $color-chill-red;
+  }
+}
+
+@include mediaQuery(tablet) {
+  .header__heart {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@include mediaQuery(phone) {
+  .header__heart {
+    width: 25px;
+    height: 25px;
+  }
+}

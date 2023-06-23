@@ -1,0 +1,57 @@
+@import '../utils/variables';
+@import '../utils/mixins.scss';
+
+.greeting {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - #{$desktop-header-height});
+
+  &__title {
+    width: 100%;
+    max-width: 660px;
+    padding: 10px 5px;
+    margin-top: -100px;
+    border-top: 2px solid $color-white;
+    border-bottom: 2px solid $color-white;
+    
+    height: 0;
+    overflow: hidden;
+    transition: height 2s;
+
+    &.is-visible {
+      height: auto;
+    }
+  }
+}
+
+@include mediaQuery(smallDesktop) {
+  .greeting {
+    min-height: calc(100vh - #{$smallDesktop-header-height});
+  
+    &__title {
+      padding: 20px 5px;
+      margin-top: -80px;
+    }
+  }
+}
+
+@include mediaQuery(tablet) {
+  .greeting {
+    min-height: calc(100vh - #{$tablet-header-height});
+
+    &__title {
+      margin-top: -60px;
+    }
+  }
+}
+
+@include mediaQuery(phone) {
+  .greeting {
+    min-height: calc(100vh - #{$phone-header-height});
+
+    &__title {
+      margin-top: -30px;
+    }
+  }
+}
