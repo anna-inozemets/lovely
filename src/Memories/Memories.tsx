@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Memories.scss';
+import AOS from 'aos';
 import Chuchundryk from '../images/chuchundryk.jpeg';
 import Chibupelya from '../images/chibupelya.jpeg';
 import { MemoriesCards } from '../MemoriesCards';
+import 'aos/dist/aos.css';
 
 const chuchudrykMemories = [
   {
@@ -59,18 +61,24 @@ const chibupelyaMemories = [
 ];
 
 export const Memories:React.FC = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  });
+
   return (
     <section className="section memories">
       <h2 className="memories__title">
         Помню . . .
       </h2>
-      <div className="memories__part">
+      <div data-aos="zoom-in-right" className="memories__part">
         <div className="memories__part-photo">
           <img src={Chuchundryk} alt="Chuchundryk's" />
         </div>
         <MemoriesCards memories={chuchudrykMemories} />
       </div>
-      <div className="memories__part">
+      <div data-aos="zoom-in-left" className="memories__part">
         <div className="memories__part-photo">
           <img src={Chibupelya} alt="Chuchundryk's" />
         </div>

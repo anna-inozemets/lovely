@@ -39,11 +39,19 @@
 @include mediaQuery(tablet) {
   .greeting {
     min-height: calc(100vh - #{$tablet-header-height});
+
+    &__title {
+      margin-top: -60px;
+    }
   }
 }
 
 @include mediaQuery(phone) {
   .greeting {
     min-height: calc(100vh - #{$phone-header-height});
+
+    &__title {
+      margin-top: -30px;
+    }
   }
 }

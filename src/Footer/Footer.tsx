@@ -16,12 +16,20 @@ export const Footer: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const modalRoot = document.getElementById('modal__root');
 
+  const handleScrollWithModal = () => {
+    document.body.classList.toggle('no-scroll');
+    document.querySelector('html')?.classList.toggle('no-scroll');
+  };
+
   const handleClick = () => {
     setShowModal(true);
+    handleScrollWithModal();
   };
 
   const handleCloseModal = () => {
     setShowModal(false);
+    handleScrollWithModal();
+    document.body.classList.remove('no-scroll');
     toast(
       <div className="notification">
         <img
