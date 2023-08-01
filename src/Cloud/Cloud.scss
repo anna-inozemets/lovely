@@ -1,0 +1,61 @@
+@import '../utils/variables';
+@import '../utils/mixins.scss';
+
+@keyframes pulsation {
+  0% {
+    filter:
+      drop-shadow(0px 0px 20px rgba(#021d7e, 0.5))
+      drop-shadow(0px 0px 30px rgba(#021d7e, 0.5))
+      drop-shadow(0px 0px 25px rgba(#021d7e, 1));
+  }
+  50% {
+    filter:
+      drop-shadow(0px 0px 0 rgba(#021d7e, 0.5))
+      drop-shadow(0px 0px 0 rgba(#021d7e, 0.5))
+      drop-shadow(0px 0px 0 rgba(#021d7e, 1));
+  }
+  100% {
+    filter:
+      drop-shadow(0px 0px 20px rgba(#021d7e, 0.5))
+      drop-shadow(0px 0px 30px rgba(#021d7e, 0.5))
+      drop-shadow(0px 0px 25px rgba(#021d7e, 1));
+  }
+}
+
+.cloud__button {
+  position: absolute;
+  color: $color-white;
+  transition: all 0.4s;
+
+  &:hover {
+    transform: scale(1.2);
+    color: $color-light-blue;
+  }
+
+  &--kitten {
+    top: 50px;
+    left: 140px;
+  }
+
+  &--puzzle {
+    bottom: 50px;
+    left: 100px;
+  }
+
+  &--flashlight {
+    bottom: 30%;
+    right: 120px;
+  }
+
+  &__icon {
+    animation: pulsation 5s infinite ease-in-out;
+
+    &--kitten {
+      animation-delay: 1s;
+    }
+
+    &--puzzle {
+      animation-duration: 3s;
+    }
+  }
+}

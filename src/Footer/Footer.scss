@@ -77,6 +77,13 @@
   }
 }
 
+.Toastify__close-button {
+  opacity: 0;
+}
+.Toastify__toast-icon {
+  margin-inline-end: 0;
+}
+
 
 @include mediaQuery(tablet) {
   .footer {

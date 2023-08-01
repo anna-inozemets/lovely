@@ -8,18 +8,14 @@ import { Modal } from '../Modal';
 import ModalPhoto from '../images/kill-you.jpg';
 import 'react-toastify/dist/ReactToastify.css';
 import NotificationPhoto from '../images/notification.jpg';
+import { handleScrollWithModal } from '../utils/helpers';
 
 toast.configure();
 
 export const Footer: React.FC = () => {
   const startDate = new Date('2021-06-28');
   const [showModal, setShowModal] = useState(false);
-  const modalRoot = document.getElementById('modal__root');
-
-  const handleScrollWithModal = () => {
-    document.body.classList.toggle('no-scroll');
-    document.querySelector('html')?.classList.toggle('no-scroll');
-  };
+  const modalRoot = document.getElementById('modal__root--timer');
 
   const handleClick = () => {
     setShowModal(true);
@@ -29,7 +25,6 @@ export const Footer: React.FC = () => {
   const handleCloseModal = () => {
     setShowModal(false);
     handleScrollWithModal();
-    document.body.classList.remove('no-scroll');
     toast(
       <div className="notification">
         <img
@@ -58,7 +53,7 @@ export const Footer: React.FC = () => {
         >
           Остановить таймер
         </button>
-        <ToastContainer />
+        <ToastContainer newestOnTop />
         {showModal && modalRoot && (
           ReactDOM.createPortal(
             <Modal>
@@ -67,6 +62,7 @@ export const Footer: React.FC = () => {
               <button
                 onClick={handleCloseModal}
                 type="button"
+                className="close"
               >
                 Отменить заявку
               </button>
@@ -74,7 +70,7 @@ export const Footer: React.FC = () => {
             modalRoot,
           )
         )}
-        <div id="modal__root"></div>
+        <div id="modal__root--timer"></div>
       </div>
       <div className="footer__logo logo">
         <img src={Logo} alt="Brambllee & Burogozzz" />

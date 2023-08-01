@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './GreetingSection.scss';
 import classNames from 'classnames';
+import { Cloud } from '../Cloud';
+import { KittenModal } from '../KittenModal';
+import { PuzzleModal } from '../PuzzleModal';
+import { FlashlightModal } from '../FlashlightModal';
 
 export const GreetingSection: React.FC = () => {
   const [showBlock, setShowBlock] = useState(false);
@@ -29,6 +33,9 @@ export const GreetingSection: React.FC = () => {
           Я очень дорожу тобой, и где бы мы не находились ты самый близкий человек!
         </h1>
       </div>
+      <Cloud classNamePart="kitten"><KittenModal /></Cloud>
+      <Cloud classNamePart="puzzle"><PuzzleModal /></Cloud>
+      <Cloud classNamePart="flashlight"><FlashlightModal /></Cloud>
     </section>
   );
 };
