@@ -11,25 +11,34 @@ export const FlashlightModal: React.FC = () => {
   const handleMouseMove = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>,
   ) => {
-    if (e.type === 'mousemove') {
-      const event = e as React.MouseEvent<HTMLDivElement, MouseEvent>;
-      const containerRect = containerRef.current?.getBoundingClientRect();
+    e.preventDefault(); // Чтобы предотвратить дополнительные события на сенсорных устройствах
 
-      if (containerRect) {
-        setMousePosition({
-          x: event.clientX - containerRect.left,
-          y: event.clientY - containerRect.top,
-        });
+    const containerRect = containerRef.current?.getBoundingClientRect();
+
+    if (containerRect) {
+      let x = 0;
+      let y = 0;
+
+      if (e.type === 'mousemove') {
+        const event = e as React.MouseEvent<HTMLDivElement, MouseEvent>;
+
+        x = event.clientX - containerRect.left;
+        y = event.clientY - containerRect.top;
+      } else if (e.type === 'touchmove') {
+        const event = e as React.TouchEvent<HTMLDivElement>;
+
+        if (event.touches.length > 0) {
+          const touch = event.touches[0];
+
+          x = touch.clientX - containerRect.left;
+          y = touch.clientY - containerRect.top;
+        }
       }
-    } else if (e.type === 'touchmove') {
-      const event = e as React.TouchEvent<HTMLDivElement>;
-      const touch = event.touches[0];
-      const containerRect = containerRef.current?.getBoundingClientRect();
 
-      if (containerRect) {
+      if (x !== undefined && y !== undefined) {
         setMousePosition({
-          x: touch.clientX - containerRect.left,
-          y: touch.clientY - containerRect.top,
+          x,
+          y,
         });
       }
     }
