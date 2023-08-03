@@ -9,23 +9,23 @@ export const FlashlightModal: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent> | React.TouchEvent<HTMLDivElement>,
+    e: MouseEvent | TouchEvent,
   ) => {
-    e.preventDefault(); // Чтобы предотвратить дополнительные события на сенсорных устройствах
+    e.preventDefault();
 
     const containerRect = containerRef.current?.getBoundingClientRect();
 
     if (containerRect) {
-      let x = 0;
-      let y = 0;
+      let x;
+      let y;
 
       if (e.type === 'mousemove') {
-        const event = e as React.MouseEvent<HTMLDivElement, MouseEvent>;
+        const event = e as MouseEvent;
 
         x = event.clientX - containerRect.left;
         y = event.clientY - containerRect.top;
       } else if (e.type === 'touchmove') {
-        const event = e as React.TouchEvent<HTMLDivElement>;
+        const event = e as TouchEvent;
 
         if (event.touches.length > 0) {
           const touch = event.touches[0];
@@ -44,6 +44,21 @@ export const FlashlightModal: React.FC = () => {
     }
   };
 
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    const container = containerRef.current;
+
+    if (container) {
+      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('touchmove', handleMouseMove);
+
+      return () => {
+        container.removeEventListener('mousemove', handleMouseMove);
+        container.removeEventListener('touchmove', handleMouseMove);
+      };
+    }
+  }, []);
+
   useEffect(() => {
     if (highlightElement) {
       highlightElement.style.background = `radial-gradient(circle 5vmax at ${mousePosition.x}px ${mousePosition.y}px, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 80%, rgba(0, 0, 0, 1) 100%)`;
@@ -57,7 +72,6 @@ export const FlashlightModal: React.FC = () => {
       </h3>
       <div
         className="flashlight__modal-content"
-        onMouseMove={(event) => handleMouseMove(event)}
         ref={containerRef}
       >
         <div className="overlay"></div>
