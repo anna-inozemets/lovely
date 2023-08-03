@@ -1,10 +1,14 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useEffect, useRef, useState } from 'react';
 import './FlashlightModal.scss';
-import PrincessPhoto from '../images/princess.jpg';
+import { toast } from 'react-toastify';
+import classNames from 'classnames';
+import PrincessPhoto from '../images/princess__photo.jpg';
 
 export const FlashlightModal: React.FC = () => {
   const highlightElement = document.querySelector('.overlay') as HTMLElement;
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isWin, setIsWin] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -44,6 +48,23 @@ export const FlashlightModal: React.FC = () => {
     }
   };
 
+  const handleWin = () => {
+    setIsWin(true);
+    toast.success(
+      <div className="notification">
+        <p className="notification__text">
+          Поздравляю, котенок! Ты нашел свою принцесску❤️
+          Надеюсь, что ни смотря ни на что, твое сердечко всегда будет подсказывать, где я нахожусь😏
+        </p>
+      </div>,
+      {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: 'dark',
+        autoClose: 5000,
+      },
+    );
+  };
+
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     const container = containerRef.current;
@@ -74,8 +95,9 @@ export const FlashlightModal: React.FC = () => {
         className="flashlight__modal-content"
         ref={containerRef}
       >
-        <div className="overlay"></div>
-        <img src={PrincessPhoto} alt="" />
+        <div className={classNames('overlay', { hidden: isWin })}></div>
+        <img src={PrincessPhoto} alt="The best princesses" />
+        <button type="button" onClick={handleWin}></button>
       </div>
     </div>
   );

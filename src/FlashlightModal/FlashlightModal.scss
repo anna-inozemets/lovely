@@ -13,6 +13,17 @@
     margin: 0 auto;
     overflow: hidden;
     border-radius: 32px;
+
+    & button {
+      display: block;
+      width: 50px;
+      height: 60%;
+      position: absolute;
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 0;
+      cursor: auto;
+    }
   }
 
   & img {
@@ -35,7 +46,12 @@
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.5) 80%,
     rgba(0, 0, 0, 1) 100%
-  )
+  );
+  transition: all 4s;
+
+  &.hidden {
+    opacity: 0;
+  }
 }
 
 

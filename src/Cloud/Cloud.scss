@@ -22,10 +22,21 @@
   }
 }
 
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .cloud__button {
   position: absolute;
   color: $color-white;
   transition: all 0.4s;
+  opacity: 0;
+  animation: appear 1.5s 1.5s 1 forwards;
 
   &:hover {
     transform: scale(1.2);
@@ -33,18 +44,40 @@
   }
 
   &--kitten {
-    top: 50px;
-    left: 140px;
+    top: -5px;
+    left: 65px;
+
+    @include mediaQuery(smallDesktop) {
+      top: 20px;
+    };
+
+    @include mediaQuery(tablet) {
+      top: 40px;
+      left: 120px;
+    };
   }
 
   &--puzzle {
     bottom: 50px;
-    left: 100px;
+    left: 240px;
+
+    @include mediaQuery(smallDesktop) {
+      left: 190px;
+    };
+
+    @include mediaQuery(tablet) {
+      left: 40px
+    };
   }
 
   &--flashlight {
-    bottom: 30%;
-    right: 120px;
+    bottom: 50%;
+    right: 40px;
+
+    @include mediaQuery(smallDesktop) {
+      bottom: 25%;
+      right: 30px;
+    };
   }
 
   &__icon {

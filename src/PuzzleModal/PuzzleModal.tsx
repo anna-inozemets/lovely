@@ -24,100 +24,124 @@ export const PuzzleModal: React.FC = () => {
     {
       source: PuzzlePhoto1,
       index: 1,
+      key: 'puzzle-el-1',
     },
     {
       source: PuzzlePhoto2,
       index: 2,
+      key: 'puzzle-el-2',
     },
     {
       source: PuzzlePhoto3,
       index: 3,
+      key: 'puzzle-el-3',
     },
     {
       source: PuzzlePhoto4,
       index: 4,
+      key: 'puzzle-el-4',
     },
     {
       source: PuzzlePhoto5,
       index: 5,
+      key: 'puzzle-el-5',
     },
     {
       source: PuzzlePhoto6,
       index: 6,
+      key: 'puzzle-el-6',
     },
     {
       source: PuzzlePhoto7,
       index: 7,
+      key: 'puzzle-el-7',
     },
     {
       source: PuzzlePhoto8,
       index: 8,
+      key: 'puzzle-el-8',
     },
     {
       source: PuzzlePhoto9,
       index: 9,
+      key: 'puzzle-el-9',
     },
     {
       source: PuzzlePhoto10,
       index: 10,
+      key: 'puzzle-el-10',
     },
     {
       source: PuzzlePhoto11,
       index: 11,
+      key: 'puzzle-el-11',
     },
     {
       source: null,
       index: null,
+      key: 'puzzle-el-empty',
     },
   ]);
   const [currentBoard, setCurrentBoard] = useState([
     {
       source: PuzzlePhoto6,
       index: 6,
+      key: 'puzzle-el-6',
     },
     {
       source: PuzzlePhoto2,
       index: 2,
+      key: 'puzzle-el-2',
     },
     {
       source: PuzzlePhoto3,
       index: 3,
+      key: 'puzzle-el-3',
     },
     {
       source: PuzzlePhoto4,
       index: 4,
+      key: 'puzzle-el-4',
     },
     {
       source: PuzzlePhoto1,
       index: 1,
+      key: 'puzzle-el-1',
     },
     {
       source: PuzzlePhoto10,
       index: 10,
+      key: 'puzzle-el-10',
     },
     {
       source: PuzzlePhoto7,
       index: 7,
+      key: 'puzzle-el-7',
     },
     {
       source: PuzzlePhoto5,
       index: 5,
+      key: 'puzzle-el-5',
     },
     {
       source: PuzzlePhoto9,
       index: 9,
+      key: 'puzzle-el-9',
     },
     {
       source: PuzzlePhoto8,
       index: 8,
+      key: 'puzzle-el-8',
     },
     {
       source: PuzzlePhoto11,
       index: 11,
+      key: 'puzzle-el-11',
     },
     {
       source: null,
       index: null,
+      key: 'puzzle-el-empty',
     },
   ]);
   const [isVictory, setIsVictory] = useState(false);
@@ -177,7 +201,7 @@ export const PuzzleModal: React.FC = () => {
       <h3> Что там? </h3>
       <div className={classNames('puzzle__modal-grid', { completed: isVictory })}>
         {currentBoard.map((cell, index) => (
-          <button type="button" key={`cell-${cell || 12}`} onClick={() => handleCellClick(index)}>
+          <button type="button" key={cell.key} onClick={() => handleCellClick(index)}>
             <img src={cell.source || lastPart} alt="Part" className={classNames({ completed: isVictory })} />
             <p className={classNames({ invisible: isVictory })}>{cell.index}</p>
           </button>

@@ -72,13 +72,13 @@ export const Memories:React.FC = () => {
       <h2 className="memories__title">
         Помню . . .
       </h2>
-      <div data-aos="zoom-in-right" className="memories__part">
+      <div className="memories__part">
         <div className="memories__part-photo">
           <img src={Chuchundryk} alt="Chuchundryk's" />
         </div>
         <MemoriesCards memories={chuchudrykMemories} />
       </div>
-      <div data-aos="zoom-in-left" className="memories__part">
+      <div className="memories__part">
         <div className="memories__part-photo">
           <img src={Chibupelya} alt="Chuchundryk's" />
         </div>
