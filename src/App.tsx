@@ -4,6 +4,7 @@ import { Header } from './Header';
 import { GreetingSection } from './GreetingSection';
 import { Memories } from './Memories';
 import { Footer } from './Footer';
+import { MessageModal } from './MessageModal';
 
 export const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ export const App: React.FC = () => {
         <Memories />
       </main>
       <Footer />
+      <MessageModal />
     </div>
   );
 };
